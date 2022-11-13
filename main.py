@@ -61,5 +61,9 @@ while keep_playing(continue_game) == True:
                 diler_hand.clear()
                 break
     if sum_and_check(user_hand, 22) == False:
-        lose_win(0, user_cash, user_bet, diler_hand, user_hand)
+        user_cash -= user_bet
+        print(f"you lose! You lost: {user_bet}")
+        print(f"This is diler hand: {diler_hand}")
+        user_hand.clear()
+        diler_hand.clear()
 print(f"thanks for your game. You won: {user_cash}")
