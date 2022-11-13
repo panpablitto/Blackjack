@@ -23,17 +23,6 @@ def keep_playing(continue_game):
     else:
         return False
 
-def lose_win(win_lose, user_cash,user_bet,diler_hand, user_hand ):
-    if win_lose ==1:
-        print(f"you won! You won: {user_bet}")
-        user_cash += user_bet
-        print(f"This is diler hand: {diler_hand}")
-    elif win_lose ==0:
-        user_cash -= user_bet
-        print(f"you lose! You lost: {user_bet}")
-        print(f"This is diler hand: {diler_hand}")
-    user_hand.clear()
-    diler_hand.clear()
 
 while keep_playing(continue_game) == True:
     print(F"You have: ${user_cash}")
@@ -52,12 +41,24 @@ while keep_playing(continue_game) == True:
                 chose_card(diler_hand, 1)
             if sum_and_check(diler_hand, 22) == True:
                 if sum(user_hand)>sum(diler_hand):
-                    lose_win(1, user_cash, user_bet, diler_hand, user_hand)
+                    print(f"you won! You won: {user_bet}")
+                    user_cash += user_bet
+                    print(f"This is diler hand: {diler_hand}")
+                    user_hand.clear()
+                    diler_hand.clear()
                 else:
-                    lose_win(0, user_cash, user_bet, diler_hand, user_hand)
+                    user_cash -= user_bet
+                    print(f"you lose! You lost: {user_bet}")
+                    print(f"This is diler hand: {diler_hand}")
+                    user_hand.clear()
+                    diler_hand.clear()
                     break
             else:
-                lose_win(1, user_cash, user_bet, diler_hand, user_hand)
+                print(f"you won! You won: {user_bet}")
+                user_cash += user_bet
+                print(f"This is diler hand: {diler_hand}")
+                user_hand.clear()
+                diler_hand.clear()
                 break
     if sum_and_check(user_hand, 22) == False:
         lose_win(0, user_cash, user_bet, diler_hand, user_hand)
